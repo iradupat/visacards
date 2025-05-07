@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Visa Card Display</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .button-container {
+      margin-top: 30px;
+      width:340px;
+    }
+
+    .btn {
+      padding: 12px 24px;
+      /* margin: 10px;*/
+      background-color: #000000; /* black */
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    width:100%;
+      
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #333333; /* dark gray 
+      on hover */
+    }
+
+    .card {
+      margin-top: 40px;
+      width: 340px;
+      height: 200px;
+      background: linear-gradient(145deg, #222, #555);
+      color: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 20px;
+      display: none;
+    }
+
+    .card h3 {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+
+    .card-number {
+      font-size: 22px;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+
+    .card-details {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .label {
+      font-size: 12px;
+      color: #ccc;
+    }
+
+    .value {
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="button-container">
+    <button class="btn" onclick="showCard('MTN')">
+<!--       <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/New-mtn-logo.jpg" width="50" /> -->
+    MTN
+    </button>
+<!--     <button class="btn" onclick="showCard('Equity')">Equity</button>
+    
+    <button class="btn" onclick="showCard('ZIGZ')">ZIGZ</button> -->
+  </div>
+
+  <div class="card" id="visaCard">
+    <h3 id="cardTitle">Visa Card - MTN</h3>
+    <div class="card-number" id="cardNumber">#### #### #### ####</div>
+    <div class="card-details">
+      <div>
+        <div class="label">EXPIRY</div>
+        <div class="value" id="expiry">--/--</div>
+      </div>
+      <div>
+        <div class="label">CVV</div>
+        <div class="value" id="cvv">---</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const cardData = {
+      Equity: {
+        number: "4111 1111 1111 1234",
+        expiry: "12/27",
+        cvv: "321"
+      },
+      MTN: {
+        number: "5500 0000 0000 0004",
+        expiry: "05/26",
+        cvv: "456"
+      },
+      ZIGZ: {
+        number: "4012 8888 8888 1881",
+        expiry: "09/25",
+        cvv: "789"
+      }
+    };
+
+    function showCard(type) {
+      const card = cardData[type];
+      document.getElementById("cardTitle").textContent = `Visa Card - ${type}`;
+      document.getElementById("cardNumber").textContent = card.number;
+      document.getElementById("expiry").textContent = card.expiry;
+      document.getElementById("cvv").textContent = card.cvv;
+      document.getElementById("visaCard").style.display = "flex";
+    }
+
+    // Show MTN card by default on load
+    window.onload = () => showCard('MTN');
+  </script>
+
+</body>
+</html>
