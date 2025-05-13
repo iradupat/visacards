@@ -138,10 +138,14 @@
 
     function showCard(type) {
       const card = cardData[type];
-      if(type==="MTN")
+      if(type==="MTN"){
         document.getElementById("visaCard").classList.add("mtn");
-      if(type==="Equity")
+        document.getElementById("visaCard").classList.remove("equity");
+      }
+      if(type==="Equity"){
         document.getElementById("visaCard").classList.add("equity");
+        document.getElementById("visaCard").classList.remove("mtn");
+      }
         
       document.getElementById("cardTitle").textContent = `${type}`;
       document.getElementById("cardNumber").textContent = card.number;
