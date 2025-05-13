@@ -44,7 +44,7 @@
       margin-top: 40px;
       width: 340px;
       height: 200px;
-      background: linear-gradient(145deg, #222, #555);
+      /** background: linear-gradient(145deg, #222, #555); **/
       color: white;
       border-radius: 15px;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
@@ -79,12 +79,20 @@
     .value {
       font-size: 16px;
     }
+    .mtn{
+      background-color:#fccf03;
+      color:black;
+    }
+    .equity{
+      background-color:#9E6450;
+      color:white;
+    }
   </style>
 </head>
 <body>
 
   <div class="button-container">
-    <button class="btn" style="background-color:#B58605;" onclick="showCard('MTN')">
+    <button class="btn" style="background-color:#fccf03;" onclick="showCard('MTN')">
 <!--       <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/New-mtn-logo.jpg" width="50" /> -->
     MTN
     </button>
@@ -130,7 +138,12 @@
 
     function showCard(type) {
       const card = cardData[type];
-      document.getElementById("cardTitle").textContent = `Visa Card - ${type}`;
+      if(type==="MTN")
+        document.getElementById("visaCard").classList.add("mtn");
+      if(type==="Equity")
+        document.getElementById("visaCard").classList.add("equity");
+        
+      document.getElementById("cardTitle").textContent = `${type}`;
       document.getElementById("cardNumber").textContent = card.number;
       document.getElementById("expiry").textContent = card.expiry;
       document.getElementById("cvv").textContent = card.cvv;
@@ -139,6 +152,7 @@
 
     // Show MTN card by default on load
     window.onload = () => showCard('MTN');
+    
   </script>
 
 </body>
